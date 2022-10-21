@@ -3,8 +3,8 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - 'cadquery-server'
+  pull_request:
+    branches: [ "main" ]
 
 env:
   DOCKERFILE: Dockerfile
