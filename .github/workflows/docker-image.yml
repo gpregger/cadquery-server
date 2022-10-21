@@ -8,7 +8,7 @@ on:
 
 env:
   DOCKERFILE: Dockerfile
-  TAG: cadquery-server
+  TAG: latest
 
 jobs:
   build-and-push-image:
