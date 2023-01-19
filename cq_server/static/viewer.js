@@ -47,7 +47,7 @@ function init_viewer(_options, _modules_name) {
 	load_camera_position();
 
 	viewer = new tcv.Viewer(cad_view_dom, options, () => {});
-	add_modules_dropdown();
+	//add_modules_dropdown();
 
 	if ('hideButtons' in options) {
 		viewer.trimUI(options.hideButtons, false);
