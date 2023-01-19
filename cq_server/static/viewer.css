@@ -75,3 +75,7 @@ body {
 .cqs_module_item_link {
 	cursor: pointer;
 }
+
+#modules_dropdown {
+	display: none;
+}
