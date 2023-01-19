@@ -75,6 +75,8 @@ def run(port: int, module_manager: ModuleManager, ui_options: dict, is_dead: boo
             if last_updated_file:
                 module_manager.module_name = op.basename(last_updated_file)[:-3]
                 data = module_manager.get_data()
+                
+                # This looks really stupid but it works, no more saving twice for the view to refresh :) I'm sure future me will eventually learn how this works and fix it proper...
                 events_queue.put(SSE_MESSAGE_TEMPLATE % json.dumps(data))
                 events_queue.put(SSE_MESSAGE_TEMPLATE % json.dumps(data))
             sleep(WATCH_PERIOD)
