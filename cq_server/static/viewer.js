@@ -130,15 +130,35 @@ function show_model() {
 	viewer.render(group, tree, states, options);
 }
 
+function saveOtherViewerSettings(otherViewerSettings) {
+	otherViewerSettings.transparent = viewer.getTransparent();
+	otherViewerSettings.blackEdges = viewer.getBlackEdges();
+	otherViewerSettings.axes = viewer.getAxes();
+	otherViewerSettings.grids = Array.from(viewer.getGrids());
+	otherViewerSettings.axesZero = viewer.getAxes0();
+	otherViewerSettings.ortho = viewer.getOrtho();
+}
+
+function loadOtherViewerSettings(otherViewerSettings) {
+	viewer.setTransparent(otherViewerSettings.transparent);
+	viewer.setBlackEdges(otherViewerSettings.blackEdges);
+	viewer.setAxes(otherViewerSettings.axes);
+	viewer.setGrids(otherViewerSettings.grids);
+	viewer.setAxes0(otherViewerSettings.axesZero);
+	viewer.setOrtho(otherViewerSettings.ortho);
+}
+
 function render(_data) {
 	data = _data;
-	let cameraSettings
+	let cameraSettings;
+	let otherViewerSettings = {};
 
 	if ( ! viewer) {
 		init_viewer(options, modules_name);
 	} else {
 		try {
 			cameraSettings = viewer.getCameraLocationSettings();
+			saveOtherViewerSettings(otherViewerSettings);
 		} catch(error) { console.log(error) }
 		viewer.clear();
 	}
@@ -151,6 +171,7 @@ function render(_data) {
 		show_model();
 		try {
 			viewer.setCameraLocationSettings(cameraSettings.position, cameraSettings.quaternion, cameraSettings.target, cameraSettings.zoom);
+			loadOtherViewerSettings(otherViewerSettings);
 		} catch(error) { console.log(error) }
 	} else {
 		show_index();
