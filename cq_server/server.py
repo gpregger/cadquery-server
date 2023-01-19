@@ -74,7 +74,7 @@ def run(port: int, module_manager: ModuleManager, ui_options: dict, is_dead: boo
 
             if last_updated_file:
                 module_manager.module_name = op.basename(last_updated_file)[:-3]
-                sleep(10)
+                sleep(2)
                 data = module_manager.get_data()
                 events_queue.put(SSE_MESSAGE_TEMPLATE % json.dumps(data))
             sleep(WATCH_PERIOD)
