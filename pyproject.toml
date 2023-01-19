@@ -17,7 +17,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "3.10.9"
 Flask = "^2.2.2"
 jupyter-cadquery = "^3.5.2"
 cadquery-massembly = "^1.0.0"
